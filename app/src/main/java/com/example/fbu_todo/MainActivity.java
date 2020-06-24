@@ -5,11 +5,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         //edItem.setText("I'm doing this from Java :)"); set text in edItem bar
 
-        items = new ArrayList<>(); //instatiate your list of items
+        loadItems();
+        //items = new ArrayList<>(); //instatiate your list of items
         //items.add("Struggle over AP Assignment");
         //items.add("Cry over Physics");
         //items.add("Figure out how to move from my pinkie?");
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 //notify adapter at which position an item has been deleted
                 itemsAdapter.notifyItemRemoved(position);
                 Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_SHORT).show();
+                saveItems();
             }
         };
 
@@ -76,7 +84,33 @@ public class MainActivity extends AppCompatActivity {
                 String tstMsg = "'" + todoItems + "' was added";
                 Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_SHORT).show();
                 //Length short is the duration
+                saveItems();
             }
         });
+    }
+
+    private File getDataFile(){
+        return new File(getFilesDir(), "data.txt");
+    }
+
+    //Load items by reading every line of the data file
+    private void loadItems()
+    {
+        try {
+            items = new ArrayList<>(FileUtils.readLines(getDataFile(), Charset.defaultCharset()));
+        } catch (IOException e) {
+            Log.e("MainActivity", "Error Reading Items", e);
+            items = new ArrayList<>();
+        }
+    }
+
+    //Saves items by writing items on data file
+    private void saveItems()
+    {
+        try {
+            FileUtils.writeLines(getDataFile(),items);
+        } catch (IOException e) {
+            Log.e("MainActivity","Error Writing Items", e);
+        }
     }
 }
