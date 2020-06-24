@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     EditText edItem;
     RecyclerView rvItems;
 
+    ItemsAdapter itemsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,24 +37,28 @@ public class MainActivity extends AppCompatActivity {
         //edItem.setText("I'm doing this from Java :)"); set text in edItem bar
 
         items = new ArrayList<>(); //instatiate your list of items
-        items.add("Struggle over AP Assignment");
-        items.add("Cry over Physics");
-        items.add("Figure out how to move from my pinkie?");
+        //items.add("Struggle over AP Assignment");
+        //items.add("Cry over Physics");
+        //items.add("Figure out how to move from my pinkie?");
 
         //inserted this after the interface
         ItemsAdapter.OnLongClickListener onLongClickListener = new ItemsAdapter.OnLongClickListener()
         {
             @Override
             public void onItemLongClick(int position) {
+                String tstMsg = "'" + items.get(position) + "' was removed";
                 //delete item from model
+                items.remove(position);
                 //notify adapter at which position an item has been deleted
+                itemsAdapter.notifyItemRemoved(position);
+                Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_SHORT).show();
             }
         };
 
 
         //Still a bit confused about how this adaptor works but ok...
         //put it after defining our items, bc pass the items to ItemsAdapter
-        final ItemsAdapter itemsAdapter = new ItemsAdapter(items, onLongClickListenerlong);
+        itemsAdapter = new ItemsAdapter(items, onLongClickListener);
         rvItems.setAdapter(itemsAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
 
