@@ -10,13 +10,13 @@ Time spent: **5/6** hours spent in total
 
 The following **required** functionality is completed:
 
-* [ ] User can **view a list of todo items**
-* [ ] User can **successfully add and remove items** from the todo list
-* [ ] User's **list of items persisted** upon modification and and retrieved properly on app restart
+* [X] User can **view a list of todo items**
+* [X] User can **successfully add and remove items** from the todo list
+* [X] User's **list of items persisted** upon modification and and retrieved properly on app restart
 
 The following **stretch** features are implemented:
 
-* [ ] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list
+* [ ] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list--not yet implemented
 
 The following **additional** features are implemented:
 
@@ -32,11 +32,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The process was fairly smooth. There was a little difficuulty in the beginning figuring out coding envirnment. Some parts of the instructions I wasn't sure about the reasonsing behind what we were doing. I commented parts I was confused about while coding. I hope doing more of these similar apps will help me understand, and I plan on going back and reviewing the commented sections over the next couple days to help me understand each step better. 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [yyyy] [CodePath, ed. Chianna Cohen]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
