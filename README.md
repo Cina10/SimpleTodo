@@ -38,7 +38,7 @@ The process was fairly smooth. There was a little difficuulty in the beginning f
 
 ## License
 
-    Copyright [yyyy] [CodePath, ed. Chianna Cohen]
+    Copyright [2020] [CodePath, ed. Chianna Cohen]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
